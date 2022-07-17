@@ -66,7 +66,7 @@ def format_error_to_slack_message(error_message):
     message = {
         'attachments': [{
             'color': '#8963B9',
-            'title': 'Ooopsy oopsy!',
+            'title': 'SSL Certificate Checker!',
             'text': f'Check logs! Failed with error: {error_message}'
         }]
     }

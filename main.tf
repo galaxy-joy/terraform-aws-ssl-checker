@@ -7,7 +7,7 @@ resource "aws_cloudwatch_event_rule" "rule" {
 
 module "lambda" {
   source          = "terraform-aws-modules/lambda/aws"
-  version         = "2.11.0"
+  version         = "3.3.1"
   function_name   = var.function_name
   description     = "Lambda to monitor app https endpoint availability and SSL certificate validity."
   handler         = "ssl-check-to-slack.main"
@@ -47,7 +47,7 @@ resource "aws_cloudwatch_event_target" "target" {
 }
 
 locals {
-  hook_urls = concat([nonsensitive(var.slack_hook_url)], local.additional_slack_hook_urls)
+  hook_urls = concat([var.slack_hook_url], local.additional_slack_hook_urls)
 }
 
 # nonsensitive fails on empty list like this
